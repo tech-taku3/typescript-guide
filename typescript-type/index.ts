@@ -61,3 +61,8 @@ const person4: {
     },
     age: 21
 }
+
+// 配列の型
+const fruits: string[] = ['apple', 'banana', 'cherry'];
+// numberを入れるには、any[]型にするか、型推論に任せるか、|で区切る
+const anys: (string | number | boolean)[] = ['apple', 10, true, false];
