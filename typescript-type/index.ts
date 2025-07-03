@@ -23,3 +23,41 @@ let hello2: string;
 // hello2 = 2; // ← string指定するとエラーになる
 hello2 = 'hello';
 // hello2 = true; // ← string指定するとエラーになる
+
+// objectに型をつける
+// TypeScriptの型推論に任せる方法
+let person = {
+    name: 'Jack',
+    age: 21
+}
+
+// 型を明示する方法
+const person2: {
+    name: string;
+    age: number;
+} = {
+    name: 'Jack',
+    age: 21
+}
+
+// オブジェクトの型として、object型は使わない。　｛｝も同様。
+const person3: object = {
+    name: 'Jack',
+    age: 21
+}
+// console.log(person3.name) // ←エラー：　プロパティ 'name' は型 'object' に存在しません。
+
+// ネストするオブジェクトの型
+const person4: {
+    name: {
+        first: string;
+        last: string;
+    },
+    age: number;
+} = {
+    name: {
+        first: 'Jack',
+        last: 'Smith'
+    },
+    age: 21
+}
