@@ -94,3 +94,11 @@ anything.hoge = 'hoge';
 let banana = 'banana';
 banana = anything; // string型にanyも入れることができてしまう。
 // TypeScriptの型のメリットが活かせないため、なるべくanyは使わない
+
+// Union型を使って複数の型を使う方法
+let unionType: number | string = 100;
+unionType.toUpperCase(); // エラーになる。文脈を見て賢くエラーを出し分けてくれる。
+unionType = 'hello';
+unionType.toUpperCase();
+// Union型：　配列での使い方
+let unionTypes: (number | string)[] = [21, 'hello'];
