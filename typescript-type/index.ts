@@ -71,3 +71,16 @@ const anys: (string | number | boolean)[] = ['apple', 10, true, false];
 const book: [string, number, boolean] = ['business', 1500, false];
 // book.push(21) //←コンパイルの時はエラー起きない。TypeScriptは初期値の型チェックは厳しいが、その後はゆるい
 // console.log(book[3]) // ←　ただ、参照するときには、この型に[3]はないとエラーを出してくれる
+
+// 列挙型を作成。CoffeeSizeという型を作成。本物のオブジェクトも作成
+enum CoffeeSize {
+    SHORT = 'SHORT',
+    TALL = 'TALL',
+    GRANDE = 'GRANDE',
+    VENTI = 'VENTI'
+}
+
+const coffee = {
+    hot: true,
+    size: CoffeeSize.TALL
+}
