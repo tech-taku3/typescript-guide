@@ -84,3 +84,13 @@ const coffee = {
     hot: true,
     size: CoffeeSize.TALL
 }
+
+// どんな型にもなるany型
+let anything: any = true;
+anything = 'hello';
+anything = ['hello', 33, true];
+anything = {};
+anything.hoge = 'hoge';
+let banana = 'banana';
+banana = anything; // string型にanyも入れることができてしまう。
+// TypeScriptの型のメリットが活かせないため、なるべくanyは使わない
