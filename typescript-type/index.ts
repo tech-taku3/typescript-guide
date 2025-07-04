@@ -66,3 +66,8 @@ const person4: {
 const fruits: string[] = ['apple', 'banana', 'cherry'];
 // numberを入れるには、any[]型にするか、型推論に任せるか、|で区切る
 const anys: (string | number | boolean)[] = ['apple', 10, true, false];
+
+// Tuple型を使用して、決まった内容の配列を作る方法
+const book: [string, number, boolean] = ['business', 1500, false];
+// book.push(21) //←コンパイルの時はエラー起きない。TypeScriptは初期値の型チェックは厳しいが、その後はゆるい
+// console.log(book[3]) // ←　ただ、参照するときには、この型に[3]はないとエラーを出してくれる
