@@ -97,8 +97,24 @@ banana = anything; // string型にanyも入れることができてしまう。
 
 // Union型を使って複数の型を使う方法
 let unionType: number | string = 100;
-unionType.toUpperCase(); // エラーになる。文脈を見て賢くエラーを出し分けてくれる。
+// unionType.toUpperCase(); // エラーになる。文脈を見て賢くエラーを出し分けてくれる。
 unionType = 'hello';
 unionType.toUpperCase();
 // Union型：　配列での使い方
 let unionTypes: (number | string)[] = [21, 'hello'];
+
+// Literal型を使って特定の値のみを取り扱う方法
+const apple: 'apple' = 'apple' // 'apple'しか受けれない　　"" `` はどちらも同じLiteralとして扱われる
+// const apple = 'apple' // constにした理由：constにすると、型推論でLiteral型として扱われる
+// let apple = 'apple' // letの場合はstring型になる
+
+// Union型と組み合わせて、enumと似たような使い方ができる。Union型よりシンプルで、こちらの使い方推奨。
+let clothSize : 'small' | 'medium' | 'large' = 'large'
+
+const cloth: {
+    color: string;
+    size: 'small' | 'medium' | 'large'
+} = {
+    color: 'white',
+    size: 'medium'
+}
