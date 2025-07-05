@@ -108,13 +108,17 @@ const apple: 'apple' = 'apple' // 'apple'しか受けれない　　"" `` はど
 // const apple = 'apple' // constにした理由：constにすると、型推論でLiteral型として扱われる
 // let apple = 'apple' // letの場合はstring型になる
 
+// typeエイリアス
+type ClothSize = 'small' | 'medium' | 'large'
+
 // Union型と組み合わせて、enumと似たような使い方ができる。Union型よりシンプルで、こちらの使い方推奨。
-let clothSize : 'small' | 'medium' | 'large' = 'large'
+let clothSize : ClothSize = 'large'
 
 const cloth: {
     color: string;
-    size: 'small' | 'medium' | 'large'
+    size: ClothSize
 } = {
     color: 'white',
     size: 'medium'
 }
+
