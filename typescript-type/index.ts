@@ -177,3 +177,7 @@ text = anyInput;
 if (typeof unknownInput === 'string') {
     text = unknownInput;
 }
+
+// satisfies演算子
+28 satisfies number
+const age = 28 satisfies number // ただの演算子。型推論には一切影響を与えない。ageについては、satisfies numberがないのと同じ扱い。型推論を機能させつつ、型注釈と同じ型チェックができる
