@@ -159,3 +159,21 @@ function doubleAndHandle(num: number, cb: (num: number) => number): void {
 doubleAndHandle(21, doubleNum => {
     return doubleNum
 });
+
+let unknownInput: unknown;
+let anyInput: any;
+let text: string;
+
+anyInput = 'hello';
+anyInput = 21;
+anyInput = true;
+unknownInput = 'hello';
+unknownInput = 21;
+unknownInput = true;
+
+text = anyInput;
+// text = unknownInput; // エラーになる。anyとの違い。なんでも入れれるが使うときは注意してね。少し厳しくなる。
+// ナローイング、タイプガードで活躍
+if (typeof unknownInput === 'string') {
+    text = unknownInput;
+}
