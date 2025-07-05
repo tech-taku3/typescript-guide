@@ -122,3 +122,7 @@ const cloth: {
     size: 'medium'
 }
 
+// 関数に型を適用させる方法 パラメータと戻り値。戻り値には型推論が有効。パラメータは指定しないとany型に。
+function add (num1: number, num2: number): number {
+    return num1 + num2
+}
