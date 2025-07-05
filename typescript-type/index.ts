@@ -181,3 +181,32 @@ if (typeof unknownInput === 'string') {
 // satisfies演算子
 28 satisfies number
 const age = 28 satisfies number // ただの演算子。型推論には一切影響を与えない。ageについては、satisfies numberがないのと同じ扱い。型推論を機能させつつ、型注釈と同じ型チェックができる
+
+// never型を使って、起こり得ない値の型を使用する
+function error(message: string): never {
+    throw new Error(message);
+    // 無限ループなどもなにも返さないのでneverが使える
+    // while(true) {
+    //     console.log('hoge')
+    // }
+}
+
+// 関数宣言の場合、型推論はvoidになる
+function error1(message: string) {
+    throw new Error(message);
+}
+
+// 関数式で書いた場合、error2の戻り値の型推論はnever型になる
+const error2 = function (message: string) {
+    throw new Error(message);
+}
+// →　後方互換性のため。neverはTypeScriptのver2から登場。　関数式、アロー関数の場合、そのような挙動をしないためnever型推論される。
+
+function gitSizeName(size: 's' | 'm' | 'l') {
+    switch(size) {
+        case 's': return 'small'
+        case 'm': return 'medium'
+        case 'l': return 'large'
+        default: return size  satisfies never // 網羅性のチェックに便利。Union型に'xl'を入れた場合、ここがエラーになり気づきやすい
+    }
+}
