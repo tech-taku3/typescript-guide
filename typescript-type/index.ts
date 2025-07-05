@@ -136,3 +136,7 @@ console.log(sayHello());
 // 厳密には、undefinedを返す。　
 // Hello!
 // undefined
+
+// undefined型とnull型 それぞれそれしか入れることができない型。
+let tempUndefined: undefined = undefined;
+let tempNull: null = null;
