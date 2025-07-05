@@ -149,3 +149,13 @@ const anotherAdd2: (n1: number, n2: number) => number = function (num1: number, 
 };
 // アロー関数
 const doubleNumber: (num: number) => number = num => num * 2;
+
+// callback関数の型
+function doubleAndHandle(num: number, cb: (num: number) => number): void {
+    const doubleNum = cb(num * 2)
+    console.log(doubleNum);
+}
+
+doubleAndHandle(21, doubleNum => {
+    return doubleNum
+});
