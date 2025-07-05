@@ -140,3 +140,12 @@ console.log(sayHello());
 // undefined型とnull型 それぞれそれしか入れることができない型。
 let tempUndefined: undefined = undefined;
 let tempNull: null = null;
+
+//関数型を使って、特定の関数のみを代入することができる変数を作る
+const anotherAdd: (n1: number, n2: number) => number = add;
+// 無名関数でも書くことができる。前と後ろどちらかの型注釈があれば、型推論してくれる。
+const anotherAdd2: (n1: number, n2: number) => number = function (num1: number, num2: number): number {
+    return num1 + num2
+};
+// アロー関数
+const doubleNumber: (num: number) => number = num => num * 2;
