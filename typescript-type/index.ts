@@ -126,3 +126,13 @@ const cloth: {
 function add (num1: number, num2: number): number {
     return num1 + num2
 }
+
+// 関数の戻り値にvoid型を使う方法
+function sayHello(): void {
+    console.log("Hello!");
+}
+
+console.log(sayHello()); 
+// 厳密には、undefinedを返す。　
+// Hello!
+// undefined
