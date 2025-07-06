@@ -42,3 +42,11 @@ tsc index.ts # tsconfig.jsonの内容は適用されず、単体でコンパイ�
 
 // include　, filesがないときは全てがコンパイル対象。includeなくてもfilesがあればfilesのみ対象
 ```
+
+## compilerOptions: targetを指定して、特定のバージョンのJavaScriptに変換する方法
+
+```json
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    // → 指定しない場合デフォルトではES3(講義ではES5と)。es6(es2015), es2017,など
+```
+ref.[TypeScript_target](https://www.typescriptlang.org/ja/tsconfig/#target)
