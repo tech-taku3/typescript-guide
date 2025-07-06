@@ -110,9 +110,9 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "include": [
-    "index.ts"
-  ],
+  // "include": [
+  //   "index.ts"
+  // ],
   "exclude": [
     // "index.ts", // 両方設定した場合、include - excludeで、index.tsはコンパイルされない。
     "**/compiler.ts",
