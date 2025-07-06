@@ -120,3 +120,9 @@ outDir:
 "noEmit": true,             // 何も出力しない。エラーだけチェックする
 "downlevelIteration": true, // targetがES5, ES3のときのみ使用可能。　for-ofなどをコンパイルするときエラーが出たら、このオプションを検討する。
 ```
+
+## noEmitOnErrorオプションを使って、エラーが出たときにコンパイルしない方法
+
+```
+"noEmitOnError": true,
+```
