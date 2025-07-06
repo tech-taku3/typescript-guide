@@ -86,3 +86,23 @@ perplexity参照↓
 "declaration": true,        // 型定義ファイル(.d.ts)を作る。 例:自作ライブラリを配布したい。→コンパイルしたjsを公開。型情報が抜けてしまう。　.d.tsで型情報を渡すことで、補完やドキュメントとして使うことができる
 "declarationMap": true,     // 型定義ファイルのためのソースマップを作る。
  ```
+
+## SourceMapを使用して、ブラウザでTypeScriptを操作する方法
+```json
+"sourceMap": true,          // jsとtsの架け橋になるMapfileを作成。ブラウザがtsファイルを理解できるようにするもの
+```
+tscを実行すると、compiler.js → compiler.js.mapが作成される
+jsファイル → tsファイルを作り出すためのファイル。
+
+↓Dev tool: compiler.js
+```jsx
+"use strict";
+let hello = 'hello';
+console.log(hello.toUpperCase());
+//# sourceMappingURL=compiler.js.map
+```
+↓Dev tool: compiler.ts
+```tsx
+let hello = 'hello';
+console.log(hello.toUpperCase());
+```
