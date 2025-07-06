@@ -77,4 +77,12 @@ libをコメントアウトすると、targetで指定したバージョンに�
 perplexity参照↓
 > "target": "es2016" → デフォルトのlibは ["dom", "es2016", "dom.iterable", "scripthost"]
 
+## allowJs, checkJs, jsx, declaration, declarationMapの設定
 
+```json
+"allowJs": true,            // jsファイルをコンパイルの対象にする
+"checkJs": true,            // jsファイルもtsファイルと同様にエラーをレポートする。allowJsと一緒に使う
+"jsx": true,                // React.jsのために使う
+"declaration": true,        // 型定義ファイル(.d.ts)を作る。 例:自作ライブラリを配布したい。→コンパイルしたjsを公開。型情報が抜けてしまう。　.d.tsで型情報を渡すことで、補完やドキュメントとして使うことができる
+"declarationMap": true,     // 型定義ファイルのためのソースマップを作る。
+ ```
