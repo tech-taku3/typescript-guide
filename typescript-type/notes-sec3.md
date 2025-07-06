@@ -106,3 +106,17 @@ console.log(hello.toUpperCase());
 let hello = 'hello';
 console.log(hello.toUpperCase());
 ```
+
+## outDirとrootDir, removeComments, noEmit, downlevelIterationの使い方
+
+outFile: 出力するファイルを一つにまとめる（今では使われない古い設定）
+outDir: 
+
+```json
+"outFile": "./",            //　出力するファイルを一つにまとめる（今では使われない古い設定）
+"outDir": "./",             // コンパイルしたjsファイルの出力先。全部のtsファイルが最も効率的に入るようdistの中身が設定される。tsの階層構造が一まとまりになっている場合、ディレクトリ構造が出力されない。
+"rootDir": "./",            // 上記に対し、構造を維持した状態でコンパイルしたjsファイルを出力できるようになる。　すべてのjsファイルが含まれないとエラーになる。
+"removeComments": true,     // コンパイルしたファイルにコメントアウトが含まれない
+"noEmit": true,             // 何も出力しない。エラーだけチェックする
+"downlevelIteration": true, // targetがES5, ES3のときのみ使用可能。　for-ofなどをコンパイルするときエラーが出たら、このオプションを検討する。
+```
