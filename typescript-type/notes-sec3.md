@@ -151,3 +151,31 @@ outDir:
 "noImplicitReturns": true,          // 暗黙的なreturnをエラー
 "noFallthroughCasesInSwitch": true, // switch文で使う
 ```
+
+## forceConsistentCasingInFileNamesとisolatedModulesとskipLibCheckとextendsとProjects
+
+```json
+"forceConsistentCasingInFileNames": true,   // file名の大文字・小文字を区別する
+"isolatedModules": true,                    // tsファイルを独立した1つのファイルとして見たときに解釈できないコードをチェック
+"skipLibCheck": true                        // `.d.ts`ファイル(他のライブラリの型定義ファイル)をスキップする
+```
+
+```json
+{
+    "extends": "./tsconfig.base.json", // 別の設定ファイルを指定することができる。　base + 下記設定(上書き)
+    "compileOptions": {
+        /* Projects */  // モノレポ。tsのプロジェクトを一気に複数管理する場合に使う。
+        // "incremental": true,
+        // "composite": true,
+        // "tsBuildInfoFile": "./.tsbuildinfo",
+        // "disableSourceOfProjectReferenceRedirect": true,
+        // "disableSolutionSearching": true,
+        // "disableReferencedProjectLoad": true,   
+    }
+}
+```
+
+
+## tsconfigのドキュメント
+
+https://www.typescriptlang.org/tsconfig/
