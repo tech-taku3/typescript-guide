@@ -129,3 +129,21 @@ class.ts(8, 22): 'name' はここで宣言されています。
 ```
 
 > arrow関数ではthisに影響を与えないため、thisの型指定は使えない（使う必要もない）
+
+## クラスを型として使う
+
+```tsx
+class Person {
+    name: string;
+    constructor(initName: string) {
+        this.name = initName;
+    }
+
+    greeting(this: Person) {  //　クラス型を指定
+        console.log(`Hello! My name is ${this.name}`);
+    }
+}
+```
+
+TypeScriptは`class Person`のときに、値を作ると同時に、
+そのクラスが生成するインスタンスの型も同名で作成する

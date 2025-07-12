@@ -5,7 +5,8 @@ class Person {
     }
 
     // greeting() {
-    greeting(this: { name: string }) {
+    // greeting(this: { name: string }) {
+    greeting(this: Person) {
         console.log(`Hello! My name is ${this.name}`);
     }
 }
@@ -15,6 +16,6 @@ quill.greeting();
 
 const anotherQuill = {
     name: 'anotherQuill',
-    anotherGreeting: quill.greeting
+    greeting: quill.greeting
 }
-anotherQuill.anotherGreeting() // この場合のthisはanotherQuillを指す。nameを設定していないため、undefinedを返す。
+anotherQuill.greeting() // この場合のthisはanotherQuillを指す。nameを設定していないため、undefinedを返す。
