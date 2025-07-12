@@ -142,3 +142,12 @@ outDir:
     // "useUnknownInCatchVariables": true,      // try-catchのcatchで受け取る値をunknownにする(falseの場合any)
     // "alwaysStrict": true,                    // コンパイル後、jsファイルの先頭に "use strict"がつく
 ```
+
+## 綺麗なコードを書くための設定
+
+```json
+"noUnusedLocals": true,             // 使用されていないローカル変数はエラー
+"noUnusedParameters": true,         // 使用されていない引数はエラー
+"noImplicitReturns": true,          // 暗黙的なreturnをエラー
+"noFallthroughCasesInSwitch": true, // switch文で使う
+```
