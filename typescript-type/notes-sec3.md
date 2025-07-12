@@ -126,3 +126,19 @@ outDir:
 ```
 "noEmitOnError": true,
 ```
+
+## noImplicitAnyやstrictNullChecksなどのstrictの設定
+
+```json
+    /* Type Checking */ 
+    "strict": true,                             // これをtrueにすると、下記すべてが自動的にtrueに設定される
+    // "noImplicitAny": true,                   // 暗黙的なanyは避ける。明示的にanyを宣言した場合はOK
+    // "strictNullChecks": true,                // null, undefinedを除外して型チェックする
+    // "strictFunctionTypes": true,             // クラスの継承時に起こり得るバグの可能性を防ぐ
+    // "strictBindCallApply": true,             // bind,call,applyメソッド使用時の第２引数以降の型チェック
+    // "strictPropertyInitialization": true,    // クラスを使用するときに使う。
+    // "strictBuiltinIteratorReturn": true,     // 
+    // "noImplicitThis": true,                  // thisが何を示しているかわからないときにエラー
+    // "useUnknownInCatchVariables": true,      // try-catchのcatchで受け取る値をunknownにする(falseの場合any)
+    // "alwaysStrict": true,                    // コンパイル後、jsファイルの先頭に "use strict"がつく
+```
