@@ -11,3 +11,24 @@
   - OOPとは現実世界の物に見立ててプログラミングする方法
   - どのようにアプリケーションを作るかという方法の1つ
   - 人間にとってわかりやすくロジックを分割する方法の1つ
+
+
+## classを定義してオブジェクトを作成する方法
+
+```tsx
+class Person {
+    name: string;
+    constructor(initName: string) {
+        this.name = initName;
+    }
+}
+
+const quill = new Person("Quill");
+console.log(quill);
+```
+
+```bash
+tsc
+node dist/src/class.js
+>> Person { name: 'Quill' }
+```
