@@ -253,3 +253,37 @@ teacher.greeting();
 `プロパティ 'age' はプライベートで、クラス 'Person' 内でのみアクセスできます。ts(2341)`
 というエラーが発生している。
 これの対処法は次で。
+
+## protected修飾子を使用して、継承先までアクセスできる範囲を広げる方法
+
+protected修飾子: publicとprivateの中間。　継承先でも使える。ただ、同様に完全に外側からpublicにアクセスはされない。
+
+```tsx
+class Person {
+
+    constructor(public readonly name: string, protected age: number) {  // ageをprivateからprotectedに変更
+    }
+
+    incrementAge() {
+        this.age += 1;
+    }
+
+    greeting(this: Person) {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+    }
+}
+
+class Teacher extends Person {
+    constructor(name: string, age: number, public subject: string) {    //
+        super(name, age)
+    }
+    greeting() { 
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    }
+}
+
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.greeting();
+
+
+```
