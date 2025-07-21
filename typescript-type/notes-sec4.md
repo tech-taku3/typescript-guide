@@ -214,3 +214,19 @@ class Person {
     }
 }
 ```
+
+## readonly修飾子を使って、書き換えできないようにする方法
+
+readonly: 読むだけ。クラスの内側でも外側でも、書き換えできないようにする。
+constructor内でのみ書き換えができる。インスタンス作成以降書き換えミスを防ぐ。
+
+
+```tsx
+    readonly id: number = 32;
+    constructor(public readonly name: string, private age: number) {
+        this.id = 31; // constructor内であれば書き換え可能
+        this.name = 'hoo';
+        this.id = 30;
+    }
+
+```
