@@ -318,3 +318,44 @@ console.log(teacher.subject);
 teacher.greeting();
 
 ```
+
+## staticを使用して、インスタンスを作らずにクラスを使う方法
+
+```tsx
+math.random() //これもインスタンス作らず使える。
+```
+
+```tsx
+class Person {
+    static species = 'Homo sapiens';
+    static isAdult(age: number) {
+        if (age > 17) return true;
+        return false;
+    }
+    constructor(public readonly name: string, protected age: number) {
+    }
+
+    incrementAge() {
+        this.age += 1;
+    }
+
+    greeting(this: Person) {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+    }
+}
+```
+
+```tsx
+console.log(Person.species);
+console.log(Person.isAdult(38));
+console.log(Teacher.species);
+console.log(Teacher.isAdult(38));
+
+// Homo sapiens
+// true
+// Homo sapiens
+// true
+```
+
+クラスのメソッド内では、`this.isAdult()`のようには使えない。インスタンス作成にstaticは含まれていないため
+`Person.isAdult()`のように呼び出すことで、メソッド内で使うことができる。
