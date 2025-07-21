@@ -180,7 +180,7 @@ quill.greeting();
 
 ## 初期化の処理を省略する方法
 
-constructorに、public/plivate　と変数名を書くことで、初期化の処理を省略することができる
+constructorに、public/private　と変数名を書くことで、初期化の処理を省略することができる
 
 ```tsx
 class Person {
@@ -285,5 +285,36 @@ class Teacher extends Person {
 const teacher = new Teacher('Quill', 38, 'Math');
 teacher.greeting();
 
+
+```
+
+## ゲッターとセッターはこう作る
+
+```tsx
+class Teacher extends Person {
+    get subject() {
+        if (!this._subject) {
+            throw new Error('There is no subject.');
+        }
+        return this._subject;
+    }
+    set subject (value) {
+        if (!this._subject) {
+            throw new Error('There is no subject.');
+        }
+        this._subject = value;
+    }
+    constructor(name: string, age: number, public _subject: string) {    //
+        super(name, age)
+    }
+    greeting() {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    }
+}
+
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.subject = 'Music';
+console.log(teacher.subject);
+teacher.greeting();
 
 ```
