@@ -20,6 +20,7 @@ abstract class Person {  // ※　abstractクラスはインスタンスを生�
 }
 
 class Teacher extends Person {
+    private static instance: Teacher;
     get subject() {
         if (!this._subject) {
             throw new Error('There is no subject.');
@@ -32,8 +33,14 @@ class Teacher extends Person {
         }
         this._subject = value;
     }
-    constructor(name: string, age: number, public _subject: string) {    //
+    private constructor(name: string, age: number, public _subject: string) {    // constructorにprivateを指定することで、外部からのnewを封じる。
         super(name, age)                       // 継承した子クラスでconstructorを定義する際は、superを含めなければならない。
+    }
+
+    static getInstance() {
+        if (Teacher.instance) return Teacher.instance;          // この処理を挟むことで、一度しかインスタンスを作成されないシングルトンパターンが実現できる。
+        Teacher.instance = new Teacher('Quill', 38, 'Math');    // クラス宣言内でならnewは使える
+        return Teacher.instance;
     }
 
     explainJob() {
@@ -41,5 +48,6 @@ class Teacher extends Person {
     }
 }
 
-const teacher = new Teacher('Quill', 38, 'Math');
-teacher.greeting();
+const teacher = Teacher.getInstance();
+const teacher2 = Teacher.getInstance();
+console.log(teacher, teacher2);

@@ -395,3 +395,50 @@ abstract class Person {  // ※　abstractクラスはインスタンスを生�
 - abstractメソッドの戻り値の型注釈をいれること。
 - abstractクラスはインスタンスを生成できない。継承のためだけに使われるクラスである。
 - 継承先のクラスでは必ずabstractメソッドを定義する必要がある。
+
+## privateをconstructorに付けて、シングルトンパターンを実装する方法
+
+newでインスタンスを生成することができなくなる
+private constructor()とすることで、外部からnewしようとすると下記エラーが発生する
+`クラス 'Teacher' のコンストラクターはプライベートであり、クラス宣言内でのみアクセス可能です。ts(2673)`
+
+シングルトンパターンを作るためにに使用される。
+シングルトンパターン：クラスからインスタンスを１つしか作ることができない。
+
+インスタンスを作成せず使えるstaticメソッド、プロパティを使用する
+```tsx
+class Teacher extends Person {
+    private static instance: Teacher;
+    get subject() {
+        if (!this._subject) {
+            throw new Error('There is no subject.');
+        }
+        return this._subject;
+    }
+    set subject (value) {
+        if (!this._subject) {
+            throw new Error('There is no subject.');
+        }
+        this._subject = value;
+    }
+    private constructor(name: string, age: number, public _subject: string) {    // constructorにprivateを指定することで、外部からのnewを封じる。
+        super(name, age)
+    }
+
+    static getInstance() {
+        if (Teacher.instance) return Teacher.instance;          // この処理を挟むことで、一度しかインスタンスを作成されないシングルトンパターンが実現できる。
+        Teacher.instance = new Teacher('Quill', 38, 'Math');    // クラス宣言内でならnewは使える
+        return Teacher.instance;
+    }
+
+    explainJob() {
+        console.log(`I am a teacher and I teach ${this.subject}.`)
+    }
+}
+
+const teacher = Teacher.getInstance();
+const teacher2 = Teacher.getInstance();
+console.log(teacher, teacher2);
+```
+
+
