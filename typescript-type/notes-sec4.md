@@ -177,3 +177,40 @@ quill.greeting();
 ```
 
 > コンパイルしたjsではprivateがない。※ES2022でprivateフィールド構文がjsに追加された(書き方は変わる)
+
+## 初期化の処理を省略する方法
+
+constructorに、public/plivate　と変数名を書くことで、初期化の処理を省略することができる
+
+```tsx
+class Person {
+    name: string; // デフォルトでpublic
+    private age: number; // privateをつけると、クラスの外側からアクセスできなくなる。
+    constructor(initName: string, initAge: number) {
+        this.name = initName;
+        this.age = initAge;
+    }
+
+    incrementAge() {
+        this.age += 1;
+    }
+
+    greeting(this: Person) {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+    }
+}
+
+// 省略後↓
+class Person {
+    constructor(public name: string, private age: number) {
+    }
+
+    incrementAge() {
+        this.age += 1;
+    }
+
+    greeting(this: Person) {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+    }
+}
+```

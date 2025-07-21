@@ -1,9 +1,5 @@
 class Person {
-    name: string; // デフォルトでpublic
-    private age: number; // privateをつけると、クラスの外側からアクセスできなくなる。
-    constructor(initName: string, initAge: number) {
-        this.name = initName;
-        this.age = initAge;
+    constructor(public name: string, private age: number) {
     }
 
     incrementAge() {
