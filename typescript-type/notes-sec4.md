@@ -230,3 +230,26 @@ constructor内でのみ書き換えができる。インスタンス作成以降
     }
 
 ```
+
+## extendsを使用して、他のクラスの機能を継承する方法
+
+```tsx
+class Teacher extends Person {
+    constructor(name: string, age: number, public subject: string) {    //
+        super(name, age)                       // 継承した子クラスでconstructorを定義する際は、superを含めなければならない。
+    }
+    greeting() { // オーバーライド。サブクラスにて同じメソッド名で処理を上書き可能
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    }
+}
+
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.greeting();
+```
+
+ただ、この状態のままでは、
+
+`I am ${this.age} years old.`の箇所で
+`プロパティ 'age' はプライベートで、クラス 'Person' 内でのみアクセスできます。ts(2341)`
+というエラーが発生している。
+これの対処法は次で。

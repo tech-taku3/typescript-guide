@@ -12,8 +12,14 @@ class Person {
     }
 }
 
-const quill = new Person("Quill", 38);
-quill.incrementAge();
-// quill.age = 42; // 直接自由に値を書き換えられるのよくない。 private　age: とすることでクラスの外側からアクセスできない。
-// console.log(quill.age); // 読み込むこともできない
-quill.greeting();
+class Teacher extends Person {
+    constructor(name: string, age: number, public subject: string) {    //
+        super(name, age)                       // 継承した子クラスでconstructorを定義する際は、superを含めなければならない。
+    }
+    greeting() { // オーバーライド。サブクラスにて同じメソッド名で処理を上書き可能
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+    }
+}
+
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.greeting();
