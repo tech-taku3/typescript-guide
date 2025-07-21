@@ -359,3 +359,39 @@ console.log(Teacher.isAdult(38));
 
 クラスのメソッド内では、`this.isAdult()`のようには使えない。インスタンス作成にstaticは含まれていないため
 `Person.isAdult()`のように呼び出すことで、メソッド内で使うことができる。
+
+
+## Abstractクラスを使用して、継承にのみ使えるクラスを作成する方法
+
+Abstract: 抽象的な
+継承先で必ずこのメソッドがあると保証するもの。
+
+
+```tsx
+abstract class Person {  // ※　abstractクラスはインスタンスを生成しない。継承のためだけに使われるクラスである。
+    static species = 'Homo sapiens';
+    static isAdult(age: number) {
+        if (age > 17) return true;
+        return false;
+    }
+    constructor(public readonly name: string, protected age: number) {
+    }
+
+    incrementAge() {
+        this.age += 1;
+    }
+
+    greeting(this: Person) {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+        this.explainJob();
+    }
+
+    abstract explainJob(): void;
+}
+```
+
+注意点
+- abstractメソッドはabstractクラスの中でのみ定義できる
+- abstractメソッドの戻り値の型注釈をいれること。
+- abstractクラスはインスタンスを生成できない。継承のためだけに使われるクラスである。
+- 継承先のクラスでは必ずabstractメソッドを定義する必要がある。

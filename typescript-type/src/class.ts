@@ -1,4 +1,4 @@
-class Person {
+abstract class Person {  // ※　abstractクラスはインスタンスを生成しない。継承のためだけに使われるクラスである。
     static species = 'Homo sapiens';
     static isAdult(age: number) {
         if (age > 17) return true;
@@ -13,7 +13,10 @@ class Person {
 
     greeting(this: Person) {
         console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
+        this.explainJob();
     }
+
+    abstract explainJob(): void;
 }
 
 class Teacher extends Person {
@@ -32,12 +35,11 @@ class Teacher extends Person {
     constructor(name: string, age: number, public _subject: string) {    //
         super(name, age)                       // 継承した子クラスでconstructorを定義する際は、superを含めなければならない。
     }
-    greeting() { // オーバーライド。サブクラスにて同じメソッド名で処理を上書き可能
-        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this.subject}`);
+
+    explainJob() {
+        console.log(`I am a teacher and I teach ${this.subject}.`)
     }
 }
 
-console.log(Person.species);
-console.log(Person.isAdult(38));
-console.log(Teacher.species);
-console.log(Teacher.isAdult(38));
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.greeting();
