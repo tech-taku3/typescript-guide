@@ -37,3 +37,23 @@ const human: Human = {
 }
 let developer: Human;
 ```
+
+## メソッドをオブジェクトの型に指定する方法
+
+```tsx
+interface Human {
+    name: string;
+    age: number;
+    // greeting: (message: string)=> void;  // 関数の型注釈おさらい
+    greeting(message: string) :void;        // あくまでオブジェクトの中の関数、メソッドに対してはこう指定できる。
+}
+
+const human: Human = {
+    name: 'Quill',
+    age: 38,
+    greeting(message: string): void {
+        console.log(message);
+    }
+}
+
+```

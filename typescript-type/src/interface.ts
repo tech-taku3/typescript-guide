@@ -17,10 +17,14 @@ let developer: Human;
 interface Human {
     name: string;
     age: number;
+    // greeting: (message: string)=> void;  // 関数の型注釈おさらい
+    greeting(message: string) :void;        // あくまでオブジェクトの中の関数、メソッドに対してはこう指定できる。
 }
 
 const human: Human = {
     name: 'Quill',
-    age: 38
+    age: 38,
+    greeting(message: string) {
+        console.log(message);
+    }
 }
-let developer: Human;
