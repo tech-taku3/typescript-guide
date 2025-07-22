@@ -57,3 +57,28 @@ const human: Human = {
 }
 
 ```
+
+## implementsを使用して、クラスに対してinterfaceの条件を適用させる方法
+
+classとinterfaceを同時に適用させる
+
+```tsx
+interface Human {
+    name: string;
+    age: number;
+    greeting(message: string) :void;
+}
+
+class Developer implements Human{
+    constructor(public name: string, public age: number) {} // private, protectedは使えない。readonly,publicは使える。　新しいプロパティを追加はOK
+    greeting(message: string) {
+        console.log('hello')
+    }
+}
+```
+
+- classをextendsで継承させる際に複数指定できない
+- implementsは複数同時に指定することができる。カンマ区切り
+- implementsはコンパイルしたら消える。そのクラスで実装されている内容がinterfaceで指定されている型とマッチするかをチェックするための機能
+- implementsには、interfaceだけでなく、typeエイリアスも使用できる
+- implementsでstaticプロパティ、staticメソッドに影響を与えることはできない。あくまでimplementsは、クラスが生成するインスタンスが持っているオブジェクトの形を表している。

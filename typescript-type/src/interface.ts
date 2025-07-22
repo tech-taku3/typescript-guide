@@ -21,6 +21,13 @@ interface Human {
     greeting(message: string) :void;        // あくまでオブジェクトの中の関数、メソッドに対してはこう指定できる。
 }
 
+class Developer implements Human{
+    constructor(public name: string, public age: number) {}
+    greeting(message: string) {
+        console.log('hello')
+    }
+}
+
 const human: Human = {
     name: 'Quill',
     age: 38,
