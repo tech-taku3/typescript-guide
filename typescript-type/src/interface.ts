@@ -62,3 +62,34 @@ const user2: Human = {
 // user.name = 'faa'; // 読み取り専用プロパティであるため、'name' に代入することはできません。ts(2540)
 let developer = new Developer('Quill', 38, 3);
 developer.name = 'hello' // Developer implements Human　の中では、nameをpublicにしており、interfaceに影響の受けない
+
+interface Nameable {
+    name: string;
+}
+/**
+ * 継承する型がtypeエイリアスでも、同じように継承できる
+type Nameable = {
+    name: string;
+}
+
+typeエイリアス自体でextendsを使うことはできない。
+ただ、intersection型という仕組みを使うことで、A　かつ　Bと意味になり、　interfaceでextendsするのと同じような動きになる
+type A = {
+    age: number;
+} & Nameable
+*/
+
+// interfaceを継承する方法。
+// interfaceはextendsに複数指定できる
+interface Human_2 extends Nameable {
+    age: number;
+    greeting(message: string): void;
+}
+
+class Developer_2 implements Human_2 {
+    // Nameableの型のルールがHuman_2型に適用され、nameがないとエラーがでる
+    constructor(public name: string, public age: number, public experience: number) {}
+    greeting(message: string): void {
+        console.log(message);
+    }
+}

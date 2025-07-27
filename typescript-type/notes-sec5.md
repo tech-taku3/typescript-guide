@@ -106,3 +106,46 @@ const user: Human = tmpDeveloper;
 let developer = new Developer('Quill', 38, 3);
 developer.name = 'hello' // Developer implements Human　の中では、nameをpublicにしており、interfaceに影響の受けない
 ```
+
+## extendsを使ってinterfaceを継承する方法
+
+```tsx
+interface Nameable {
+    name: string;
+}
+/**
+ * 継承する型がtypeエイリアスでも、同じように継承できる
+type Nameable = {
+    name: string;
+}
+
+typeエイリアス自体でextendsを使うことはできない。
+ただ、intersection型という仕組みを使うことで、A　かつ　Bと意味になり、　interfaceでextendsするのと同じような動きになる
+type A = {
+    age: number;
+} & Nameable
+*/
+
+// interfaceを継承する方法。
+// interfaceはextendsに複数指定できる
+interface Human_2 extends Nameable {
+    age: number;
+    greeting(message: string): void;
+}
+
+class Developer_2 implements Human_2 {
+    // Nameableの型のルールがHuman_2型に適用され、nameがないとエラーがでる
+    constructor(public name: string, public age: number, public experience: number) {}
+    greeting(message: string): void {
+        console.log(message);
+    }
+}
+```
+
+
+同じ名前のプロパティを継承することはできるの？Classの場合はextendsを使って継承した場合子が上書きしていたが<br>
+→ interfaceは条件によっては上書きされる。<br>
+子の型が親の型に代入できる場合上書きすることができる。(例. 親: string, 子: any)
+
+
+
