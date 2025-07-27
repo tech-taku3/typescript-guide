@@ -82,3 +82,11 @@ class Developer implements Human{
 - implementsはコンパイルしたら消える。そのクラスで実装されている内容がinterfaceで指定されている型とマッチするかをチェックするための機能
 - implementsには、interfaceだけでなく、typeエイリアスも使用できる
 - implementsでstaticプロパティ、staticメソッドに影響を与えることはできない。あくまでimplementsは、クラスが生成するインスタンスが持っているオブジェクトの形を表している。
+
+## 構造的部分型 (structural subtyping)
+- 構造的(structural)
+    - 同じ構造をした型であれば区別はしない
+- 部分型(subtyping)
+    - 取れる値の範囲がより広い型への代入は可能
+
+TSにおけるオブジェクトの型とは、そのプロパティだけを持っていることを表すのではなく、最低限そのプロパティは持っているということを保証しているものというイメージ
