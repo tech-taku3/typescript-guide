@@ -93,3 +93,15 @@ class Developer_2 implements Human_2 {
         console.log(message);
     }
 }
+
+// typeでの書き方。基本はこちらで良い。
+// type addFunc = (num1: number, num2: number) => number;
+// interfaceで関数の型を定義する方法。{}でオブジェクトと混同しやすい。他の人のコード理解のため知っておくと良い
+interface addFunc {
+    // メソッド名を書かない
+    (num1: number, num2: number): number;
+}
+let addFunc: addFunc;
+addFunc = (n1: number, n2: number) => {
+    return n1 + n2;
+}

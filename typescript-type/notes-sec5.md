@@ -147,5 +147,35 @@ class Developer_2 implements Human_2 {
 → interfaceは条件によっては上書きされる。<br>
 子の型が親の型に代入できる場合上書きすることができる。(例. 親: string, 子: any)
 
+## interfaceで関数の型を表現する方法 - コールシグネチャ、コンストラクタシグネチャ
+
+interfaceはオブジェクトの型を表現するものという話だったが
+
+interfaceは関数の型も定義できる
+
+```tsx
+// typeでの書き方。基本はこちらで良い。
+// type addFunc = (num1: number, num2: number) => number;
+// interfaceで関数の型を定義する方法。{}でオブジェクトと混同しやすい。他の人のコード理解のため知っておくと良い
+interface addFunc {
+    // メソッド名を書かない。　この書き方は「コールシグネチャ」という
+    (num1: number, num2: number): number;
+    // 「コンストラクタシグネチャ」
+    // new (num1: number, num2: number): number;
+}
+let addFunc: addFunc;
+addFunc = (n1: number, n2: number) => {
+    return n1 + n2;
+}
+
+// コンストラクタシグネチャの使い方
+function tmp(func: addFunc) {
+    let data = new func(1, 2)
+}
+```
+
+補足：なぜこのようにinterfaceの型を定義することができるのか
+
+→ TSでは関数自体もオブジェクトだから。
 
 
