@@ -15,7 +15,7 @@ let developer: Human;
 
 // interface
 interface Human {
-    name: string;
+    readonly name: string;
     age: number;
     // greeting: (message: string)=> void;  // 関数の型注釈おさらい
     greeting(message: string) :void;        // あくまでオブジェクトの中の関数、メソッドに対してはこう指定できる。
@@ -58,3 +58,7 @@ const user2: Human = {
 }
 
 */
+
+// user.name = 'faa'; // 読み取り専用プロパティであるため、'name' に代入することはできません。ts(2540)
+let developer = new Developer('Quill', 38, 3);
+developer.name = 'hello' // Developer implements Human　の中では、nameをpublicにしており、interfaceに影響の受けない

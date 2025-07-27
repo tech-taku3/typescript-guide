@@ -90,3 +90,19 @@ class Developer implements Human{
     - 取れる値の範囲がより広い型への代入は可能
 
 TSにおけるオブジェクトの型とは、そのプロパティだけを持っていることを表すのではなく、最低限そのプロパティは持っているということを保証しているものというイメージ
+
+## readonly修飾子をinterfaceに使った読むだけのプロパティを作る方法
+
+```tsx
+interface Human {
+    readonly name: string;
+    age: number;
+    greeting(message: string): void;
+}
+...
+const user: Human = tmpDeveloper;
+
+// user.name = 'faa'; // 読み取り専用プロパティであるため、'name' に代入することはできません。ts(2540)
+let developer = new Developer('Quill', 38, 3);
+developer.name = 'hello' // Developer implements Human　の中では、nameをpublicにしており、interfaceに影響の受けない
+```
