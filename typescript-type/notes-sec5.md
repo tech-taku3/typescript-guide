@@ -203,3 +203,33 @@ class Developer implements Human_2 {
 
 オプショナルパラメーターは末尾に書くように。必要なパラメータから左詰めする
 
+## オブジェクトのキーはこうなっている
+
+JSではオブジェクトのキーを文字列、数字、角括弧で式を入れたりできる
+```js
+const data = 'prop';
+const obj = {
+    'user-id": 'foo',
+    1: 1,
+    [data]: 'hello';
+}
+```
+
+TSでも同じような指定ができる
+```tsx
+const data = 'prop';
+const obj:{
+    'user-id': string;
+    1: number;
+    [data]: string;
+    bar: string
+} = {
+    'user-id': 'foo',
+    1: 1,
+    [data]: 'hello',
+    bar: 'bar'
+}
+
+obj.bar;
+obj['bar']; // この方法でもプロパティにアクセスできる。キーに-やスペースが入っており、識別子にできないときに有効。
+```
