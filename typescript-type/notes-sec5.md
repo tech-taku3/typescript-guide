@@ -178,4 +178,28 @@ function tmp(func: addFunc) {
 
 → TSでは関数自体もオブジェクトだから。
 
+## ?を使ってあってもなくても良いオプショナルプロパティやオプショナルパラメーター、デフォルト引数を使用する方法
+
+```tsx
+interface Nameable {
+    name: string;
+    nickName?: string;
+}
+
+// ?がつくと、nickNameはあってもなくてもエラーにならない
+const nameable: Nameable = {
+    name:'Quill',
+    nickName: 'Quilla'
+}
+
+class Developer implements Human_2 {
+    constructor(public name: string, public age: number, public experience: number) {}
+    // デフォルト引数 何もなかったときの値
+    greeting(message: string = 'hello'): void {
+        console.log(message);
+    }
+}
+```
+
+オプショナルパラメーターは末尾に書くように。必要なパラメータから左詰めする
 

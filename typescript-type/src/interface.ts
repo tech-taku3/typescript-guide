@@ -65,6 +65,7 @@ developer.name = 'hello' // Developer implements Human　の中では、nameをp
 
 interface Nameable {
     name: string;
+    nickName?: string;
 }
 /**
  * 継承する型がtypeエイリアスでも、同じように継承できる
@@ -104,4 +105,10 @@ interface addFunc {
 let addFunc: addFunc;
 addFunc = (n1: number, n2: number) => {
     return n1 + n2;
+}
+
+// ?がつくと、nickNameはあってもなくてもエラーにならない
+const nameable: Nameable = {
+    name:'Quill',
+    nickName: 'Quilla'
 }
